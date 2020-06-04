@@ -1,8 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { useRouteMatch } from 'react-router-dom/cjs/react-router-dom';
-import { Switch, Route } from 'react-router-dom/cjs/react-router-dom.min';
 import NotFound from 'components/NotFound';
+import React from 'react';
+import { useRouteMatch } from 'react-router-dom/cjs/react-router-dom';
+import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import BookPage from './pages/BookPage';
 
 Books.propTypes = {};

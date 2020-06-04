@@ -1,10 +1,10 @@
+import BookList from 'features/Books/components/BookList';
 import React from 'react';
-import PropTypes from 'prop-types';
 
 BookPage.propTypes = {};
 
 function BookPage(props) {
-  return <div>Books Page</div>;
+  return <BookList />;
 }
 
 export default BookPage;

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 TransactionPage.propTypes = {};
 
 function TransactionPage(props) {
-  return <div>TransactionPage</div>;
+  return <div>Transaction Page</div>;
 }
 
 export default TransactionPage;
