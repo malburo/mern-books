@@ -1,6 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import TransactionList from 'features/Transactions/components/TransactionList';
+import React from 'react';
 
 TransactionPage.propTypes = {};
 
