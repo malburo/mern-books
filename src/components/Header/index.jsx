@@ -1,7 +1,5 @@
-import { Layout } from 'antd';
+import { Avatar, Layout } from 'antd';
 import React from 'react';
-import { Avatar } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
 import './style.scss';
 const { Header } = Layout;
 HeaderContainer.propTypes = {};
