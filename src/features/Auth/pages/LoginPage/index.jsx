@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import LoginForm from '../../components/LoginForm';
 import './style.scss';
+import LoginForm from 'features/Auth/components/LoginForm';
 LoginPage.propTypes = {};
 
 function LoginPage(props) {
