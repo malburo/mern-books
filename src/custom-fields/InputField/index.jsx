@@ -20,7 +20,7 @@ InputField.defaultProps = {
   disabled: false,
 };
 function InputField(props) {
-  const { field, form, type, label, placeholder, disabled } = props;
+  const { field, form, type, label, placeholder, disabled, prefix } = props;
   return (
     <Form.Item
       label={label}
@@ -32,8 +32,8 @@ function InputField(props) {
         },
       ]}>
       <Input
-        prefix={<UserOutlined className="site-form-item-icon" />}
         {...field}
+        prefix={prefix}
         type={type}
         disabled={disabled}
         placeholder={placeholder}

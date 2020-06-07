@@ -28,12 +28,15 @@ function LoginForm(props) {
             }}
             onFinish={onFinish}>
             <FastField
+              prefix={<UserOutlined className="site-form-item-icon" />}
               name="username"
               component={InputField}
               label="username"
               placeholder="username"
             />
             <FastField
+              prefix={<LockOutlined className="site-form-item-icon" />}
+              type="password"
               name="password"
               component={InputField}
               label="password"
