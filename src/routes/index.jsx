@@ -9,9 +9,10 @@ import {
 import PublicRoute from './publicRoute';
 import NotFound from 'components/NotFound';
 
+const Auth = React.lazy(() => import('features/Auth'));
 const Books = React.lazy(() => import('features/Books'));
 const Transactions = React.lazy(() => import('features/Transactions'));
-const Login = React.lazy(() => import('features/Auth/Login'));
+
 Routes.propTypes = {};
 
 function Routes(props) {
@@ -19,8 +20,7 @@ function Routes(props) {
     <BrowserRouter>
       <Suspense fallback={<div>Loading ...</div>}>
         <Switch>
-          <PublicRoute path="/login" component={Login} layout={AuthLayout} />
-          <PublicRoute path="/register" component={Login} layout={AuthLayout} />
+          <PublicRoute path="/auth" component={Auth} layout={AuthLayout} />
           <PublicRoute path="/books" component={Books} layout={MainLayout} />
           <PublicRoute
             path="/transactions"
