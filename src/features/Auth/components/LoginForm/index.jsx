@@ -1,8 +1,9 @@
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, message } from 'antd';
+import { Button } from 'antd';
 import InputField from 'custom-fields/InputField';
-import { FastField, Formik, Form } from 'formik';
+import { FastField, Form, Formik } from 'formik';
 import React from 'react';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import * as Yup from 'yup';
 import './style.scss';
 LoginForm.propTypes = {};
@@ -42,16 +43,16 @@ function LoginForm(props) {
               component={InputField}
               placeholder="password"
             />
-            <a className="login-form-forgot" href="">
+            <Link to="/about" className="login-form-forgot">
               Forgot password
-            </a>
+            </Link>
             <Button
               type="primary"
               htmlType="submit"
               className="login-form-button">
-              Log in
+              Login
             </Button>
-            Or <a href="">register now!</a>
+            Or <Link to="/auth/register">register now!</Link>
           </Form>
         );
       }}

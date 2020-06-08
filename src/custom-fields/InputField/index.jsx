@@ -1,7 +1,6 @@
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import React from 'react';
+import { Form, Input } from 'antd';
 import PropTypes from 'prop-types';
-import { Button, Checkbox, Input, Form } from 'antd';
+import React from 'react';
 
 InputField.propTypes = {
   field: PropTypes.object.isRequired,
@@ -23,7 +22,6 @@ function InputField(props) {
   const { field, form, type, label, placeholder, disabled, prefix } = props;
   const { name } = field;
   const { errors, touched } = form;
-  console.log(form.errors);
   const showError = errors[name] && touched[name];
   return (
     <Form.Item
