@@ -9,42 +9,42 @@ LoginForm.propTypes = {};
 function LoginForm(props) {
   const initialValues = {
     username: '',
-    password: null,
+    password: '',
   };
-  function onFinish(values) {
-    console.log('Received values of form: ', values);
-  }
   return (
-    <Formik initialValues={initialValues}>
-      {formikProps => {
-        const { values, errors, touched } = formikProps;
-        console.log({ values, errors, touched });
-        return (
-          <Form
-            name="normal_login"
-            className="login-form"
-            initialValues={{
-              remember: true,
-            }}
-            onFinish={onFinish}>
-            <FastField
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              name="username"
-              component={InputField}
-              label="username"
-              placeholder="username"
-            />
-            <FastField
-              prefix={<LockOutlined className="site-form-item-icon" />}
-              type="password"
-              name="password"
-              component={InputField}
-              label="password"
-              placeholder="password"
-            />
-          </Form>
-        );
-      }}
+    <Formik
+      initialValues={{ username: '', password: '' }}
+      onSubmit={(values, { resetForm }) => {
+        console.log('Hi :', values);
+        resetForm({ values: '' });
+      }}>
+      {formikProps => (
+        <Form>
+          <FastField
+            prefix={<UserOutlined className="site-form-item-icon" />}
+            type="text"
+            name="username"
+            component={InputField}
+            placeholder="username"
+          />
+          <FastField
+            prefix={<LockOutlined className="site-form-item-icon" />}
+            type="password"
+            name="password"
+            component={InputField}
+            placeholder="password"
+          />
+          <a className="login-form-forgot" href="">
+            Forgot password
+          </a>
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="login-form-button">
+            Log in
+          </Button>
+        </Form>
+      )}
     </Formik>
   );
 }

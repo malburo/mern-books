@@ -21,17 +21,11 @@ InputField.defaultProps = {
 };
 function InputField(props) {
   const { field, form, type, label, placeholder, disabled, prefix } = props;
+  const { name } = field;
   return (
-    <Form.Item
-      label={label}
-      name="username"
-      rules={[
-        {
-          required: true,
-          message: 'Please input your Username!',
-        },
-      ]}>
+    <Form.Item label={label}>
       <Input
+        id={name}
         {...field}
         prefix={prefix}
         type={type}
