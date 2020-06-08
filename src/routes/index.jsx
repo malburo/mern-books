@@ -1,5 +1,3 @@
-import AuthLayout from 'layouts/AuthLayout';
-import MainLayout from 'layouts/MainLayout';
 import React, { Suspense } from 'react';
 import {
   BrowserRouter,
@@ -8,6 +6,8 @@ import {
 } from 'react-router-dom/cjs/react-router-dom.min';
 import PublicRoute from './publicRoute';
 import NotFound from 'components/NotFound';
+import BlankLayout from 'components/Layouts/BlankLayout';
+import MainLayout from 'components/Layouts/MainLayout';
 
 const Auth = React.lazy(() => import('features/Auth'));
 const Books = React.lazy(() => import('features/Books'));
@@ -20,7 +20,7 @@ function Routes(props) {
     <BrowserRouter>
       <Suspense fallback={<div>Loading ...</div>}>
         <Switch>
-          <PublicRoute path="/auth" component={Auth} layout={AuthLayout} />
+          <PublicRoute path="/auth" component={Auth} layout={BlankLayout} />
           <PublicRoute path="/books" component={Books} layout={MainLayout} />
           <PublicRoute
             path="/transactions"

@@ -5,9 +5,14 @@ import { FastField, Form, Formik } from 'formik';
 import React from 'react';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 import './style.scss';
-LoginForm.propTypes = {};
-
+LoginForm.propTypes = {
+  onSubmit: PropTypes.func,
+};
+LoginForm.defaultProps = {
+  onSubmit: null,
+};
 function LoginForm(props) {
   const initialValues = {
     username: '',
