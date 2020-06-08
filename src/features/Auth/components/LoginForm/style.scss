@@ -1,6 +1,7 @@
 .login-form {
   text-align: center;
   background-color: #fff;
+  width: 240px;
 }
 .login-form-forgot {
   float: right;
@@ -10,4 +11,11 @@
 }
 .login-form-button {
   width: 100%;
+}
+
+.login-form-forgot {
+  margin-bottom: 10px;
+}
+.login-form-button {
+  margin-bottom: 20px;
 }

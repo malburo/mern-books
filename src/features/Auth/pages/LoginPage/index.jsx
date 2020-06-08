@@ -6,6 +6,7 @@ LoginPage.propTypes = {};
 
 function LoginPage(props) {
   function handleSubmit(values, { resetForm }) {
+    console.log(values);
     resetForm();
   }
   return (

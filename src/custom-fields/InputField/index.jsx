@@ -22,8 +22,14 @@ InputField.defaultProps = {
 function InputField(props) {
   const { field, form, type, label, placeholder, disabled, prefix } = props;
   const { name } = field;
+  const { errors, touched } = form;
+  console.log(form.errors);
+  const showError = errors[name] && touched[name];
   return (
-    <Form.Item label={label}>
+    <Form.Item
+      label={label}
+      validateStatus={showError ? 'error' : ''}
+      help={showError ? errors[name] : null}>
       <Input
         id={name}
         {...field}
