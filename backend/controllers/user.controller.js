@@ -24,16 +24,4 @@ exports.register = async (req, res, next) => {
   }
 };
 
-exports.resetPassword = async (req, res) => {
-  try {
-    let user = await User.findOne({ email: req.body.email });
-    if (!user) {
-      return res.status(400).json({
-        message: 'Email không tồn tại',
-      });
-    }
-    res.json({ message: 'Đã gửi email' });
-  } catch (err) {
-    res.status(400).json(`Error: ${err}`);
-  }
-};
+
