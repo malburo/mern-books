@@ -13,7 +13,7 @@ function LoginPage(props) {
     const action = login(currentUser);
     dispatch(action);
     resetForm();
-    history.push('/');
+    // history.push('/');
   };
   return (
     <div className="wrapper">

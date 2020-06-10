@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+import API from 'utils/api';
 // const initialUser = localStorage.getItem('user')
 //   ? JSON.parse(localStorage.getItem('user'))
 //   : null;
@@ -27,10 +27,13 @@ export default auth.reducer;
 // actions
 const { loginSuccess, logoutSuccess } = auth.actions;
 
-export const login = ({ username, password }) => async dispatch => {
+export const login = user => async dispatch => {
   try {
-    // await api.post('/api/auth/login/', { username, password })
-    dispatch(loginSuccess({ username }));
+    console.log(user);
+    const response = await API.call('post', 'auth/login', user);
+    localStorage.setItem('jwtToken', response.accessToken);
+    API.setToken(response.accessToken);
+    dispatch(loginSuccess(response.user));
   } catch (e) {
     return console.error(e.message);
   }
@@ -38,7 +41,7 @@ export const login = ({ username, password }) => async dispatch => {
 
 export const logout = () => async dispatch => {
   try {
-    // await api.post('/api/auth/logout/')
+    localStorage.removeItem('jwtToken');
     return dispatch(logoutSuccess());
   } catch (e) {
     return console.error(e.message);

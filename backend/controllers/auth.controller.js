@@ -14,10 +14,10 @@ exports.auth = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
   try {
-    const user = await User.findOne({ username: req.body.username });
+    const user = await User.findOne({ email: req.body.email });
     if (!user) {
       return res.status(400).json({
-        username: 'Username không tồn tại',
+        email: 'Email không tồn tại',
       });
     }
     const match = await bcrypt.compare(req.body.password, user.password);

@@ -15,13 +15,13 @@ LoginForm.defaultProps = {
 };
 function LoginForm(props) {
   const initialValues = {
-    username: '',
+    email: '',
     password: '',
   };
   const validationSchema = Yup.object().shape({
-    username: Yup.string()
+    email: Yup.string()
       .required('This field is required.')
-      .min(6, 'Your username is too short'),
+      .min(6, 'Your email is too short'),
     password: Yup.string()
       .required('Require password')
       .min(6, 'Your password is too short'),
@@ -37,9 +37,9 @@ function LoginForm(props) {
             <FastField
               prefix={<UserOutlined className="site-form-item-icon" />}
               type="text"
-              name="username"
+              name="email"
               component={InputField}
-              placeholder="username"
+              placeholder="email"
             />
             <FastField
               prefix={<LockOutlined className="site-form-item-icon" />}
