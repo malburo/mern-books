@@ -2,10 +2,10 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import InputField from 'custom-fields/InputField';
 import { FastField, Form, Formik } from 'formik';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import * as Yup from 'yup';
-import PropTypes from 'prop-types';
 import './style.scss';
 LoginForm.propTypes = {
   onSubmit: PropTypes.func,
@@ -31,7 +31,7 @@ function LoginForm(props) {
       initialValues={initialValues}
       onSubmit={props.onSubmit}
       validationSchema={validationSchema}>
-      {formikProps => {
+      {formik => {
         return (
           <Form className="login-form">
             <FastField

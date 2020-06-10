@@ -4,13 +4,13 @@ import { Route, Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 PrivateRoute.propTypes = {};
 
 function PrivateRoute({ component: Component, layout: Layout, ...rest }) {
-  const token = null;
+  const token = localStorage.getItem('jwtToken');
   return (
     <Route
       {...rest}
       render={props => {
         if (!token) {
-          return <Redirect to={{ pathname: '/login' }} />;
+          return <Redirect to={{ pathname: '/auth/login' }} />;
         }
         return (
           <Layout>

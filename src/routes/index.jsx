@@ -8,6 +8,7 @@ import PublicRoute from './publicRoute';
 import NotFound from 'components/NotFound';
 import BlankLayout from 'components/Layouts/BlankLayout';
 import MainLayout from 'components/Layouts/MainLayout';
+import PrivateRoute from './privateRoute';
 
 const Auth = React.lazy(() => import('features/Auth'));
 const Books = React.lazy(() => import('features/Books'));
@@ -21,14 +22,14 @@ function Routes(props) {
       <Suspense fallback={<div>Loading ...</div>}>
         <Switch>
           <PublicRoute path="/auth" component={Auth} layout={BlankLayout} />
-          <PublicRoute path="/books" component={Books} layout={MainLayout} />
-          <PublicRoute
+          <PrivateRoute path="/books" component={Books} layout={MainLayout} />
+          <PrivateRoute
             path="/transactions"
             component={Transactions}
             layout={MainLayout}
           />
-          <PublicRoute path="/shops" component={Books} layout={MainLayout} />
-          <PublicRoute path="/" component={Books} layout={MainLayout} />
+          <PrivateRoute path="/shops" component={Books} layout={MainLayout} />
+          <PrivateRoute path="/" component={Books} layout={MainLayout} />
           <Route component={NotFound} />
         </Switch>
       </Suspense>
