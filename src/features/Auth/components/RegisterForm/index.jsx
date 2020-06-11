@@ -1,23 +1,25 @@
-import { LockOutlined, UserOutlined, AuditOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
+import { AuditOutlined, LockOutlined, UserOutlined } from '@ant-design/icons';
+import { Alert, Button, Spin } from 'antd';
 import InputField from 'custom-fields/InputField';
 import { FastField, Form, Formik } from 'formik';
 import React from 'react';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import * as Yup from 'yup';
 import './style.scss';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+
 RegisterForm.propTypes = {};
 
 function RegisterForm(props) {
+  const { onSubmit } = props;
   const initialValues = {
-    username: '',
+    fullname: '',
     email: '',
     password: '',
   };
   const validationSchema = Yup.object().shape({
-    username: Yup.string()
+    fullname: Yup.string()
       .required('This field is required.')
-      .min(6, 'Your username is too short'),
+      .min(2, 'Your name is too short'),
     email: Yup.string()
       .required('This field is required.')
       .min(6, 'Your email is too short'),
@@ -28,17 +30,17 @@ function RegisterForm(props) {
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={props.onSubmit}
+      onSubmit={onSubmit}
       validationSchema={validationSchema}>
-      {formikProps => {
+      {({ isValid, dirty, isSubmitting, status }) => {
         return (
           <Form className="register-form">
             <FastField
               prefix={<UserOutlined className="site-form-item-icon" />}
               type="text"
-              name="username"
+              name="fullname"
               component={InputField}
-              placeholder="username"
+              placeholder="fullname"
             />
             <FastField
               prefix={<AuditOutlined className="site-form-item-icon" />}
@@ -57,10 +59,25 @@ function RegisterForm(props) {
             <Button
               type="primary"
               htmlType="submit"
-              className="login-form-button">
-              Register
+              className="login-form-button"
+              disabled={!(isValid && dirty) || isSubmitting}>
+              {isSubmitting ? <Spin /> : 'Register'}
             </Button>
-            Or <Link to="/auth/login">login now!</Link>
+            {status?.message && status.isSuccess && (
+              <Alert
+                message={status.message}
+                type="success"
+                className="alert-register"
+              />
+            )}
+            {status?.message && !status.isSuccess && (
+              <Alert
+                message={status.message}
+                type="error"
+                className="alert-register"
+              />
+            )}
+            <Link to="/auth/login">Login now!</Link>
           </Form>
         );
       }}

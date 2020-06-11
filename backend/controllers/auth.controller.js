@@ -37,6 +37,27 @@ exports.login = async (req, res, next) => {
   }
 };
 
+exports.register = async (req, res, next) => {
+  try {
+    const saltRounds = 10;
+    const { fullname, email, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    let newUser = await User.create({
+      fullname,
+      email,
+      password: hashedPassword,
+    });
+    delete newUser._doc.password;
+    const accessToken = jwt.sign(newUser._doc, process.env.SECRET);
+    return res.status(201).json({
+      user: newUser,
+      accessToken,
+    });
+  } catch (err) {
+    return next({ status: 400, message: err.message });
+  }
+};
+
 exports.reset = async (req, res) => {
   try {
     let user = await User.findOne({ email: req.body.email });

@@ -1,12 +1,15 @@
 const mongoose = require('mongoose');
 
-const transactionSchema = new mongoose.Schema({
-  userId: String,
-  bookId: String,
-  userName: String,
-  bookTitle: String,
-  isComplete: Boolean,
-});
+const transactionSchema = new mongoose.Schema(
+  {
+    userId: String,
+    bookId: String,
+    isComplete: Boolean,
+  },
+  {
+    timestamps: true,
+  }
+);
 
 var Transaction = mongoose.model('transactions', transactionSchema);
 
