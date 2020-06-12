@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema(
     },
     email: {
       type: String,
+      unique: true,
       required: true,
     },
     password: String,
@@ -29,6 +30,13 @@ const userSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+userSchema.virtual('books', {
+  ref: 'books',
+  localField: '_id',
+  foreignField: 'sellerId',
+});
+
 var User = mongoose.model('users', userSchema);
 
 module.exports = User;

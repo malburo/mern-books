@@ -3,6 +3,9 @@ var router = express.Router();
 
 const controller = require('../controllers/book.controller');
 
-// router.get('/', controller.index);
-// router.get('/search', controller.search);
+router.get('/', controller.get);
+router.post('/', controller.create);
+// router.put("/:id", controller.update)
+// router.delete("/:id", controller.delete);
+
 module.exports = router;
