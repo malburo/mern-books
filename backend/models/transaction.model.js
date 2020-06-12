@@ -2,9 +2,12 @@ const mongoose = require('mongoose');
 
 const transactionSchema = new mongoose.Schema(
   {
-    userId: String,
-    bookId: String,
-    isComplete: Boolean,
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
+    bookId: { type: mongoose.Schema.Types.ObjectId, ref: 'books' },
+    isComplete: {
+      type: Number,
+      default: false,
+    },
   },
   {
     timestamps: true,
