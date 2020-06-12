@@ -3,7 +3,7 @@ var router = express.Router();
 
 const controller = require('../controllers/user.controller');
 
-// router.get('/', controller.index);
-// router.post('/register', controller.postCreate);
+router.get('/', controller.get);
+router.delete('/delete/:id', controller.delete);
 
 module.exports = router;
