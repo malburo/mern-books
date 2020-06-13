@@ -9,7 +9,7 @@ function BookList(props) {
     <Row>
       <Col span={6}>
         <BookCard
-          bookCover={book.bookCover}
+          bookPictureUrl={book.bookPictureUrl}
           title={book.title}
           decription={book.decription}
           nameSeller={book.nameSeller}

@@ -59,7 +59,7 @@ function RegisterForm(props) {
             <Button
               type="primary"
               htmlType="submit"
-              className="login-form-button"
+              className="register-form-button"
               disabled={!(isValid && dirty) || isSubmitting}>
               {isSubmitting ? <Spin /> : 'Register'}
             </Button>

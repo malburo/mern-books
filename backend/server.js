@@ -9,6 +9,7 @@ const authRouter = require('./routes/auth.route');
 const userRouter = require('./routes/user.route');
 const bookRouter = require('./routes/book.route');
 const transactionRouter = require('./routes/transaction.route');
+const { ensureAuthMiddleware } = require('./middlewares/auth.middleware');
 const app = express();
 
 app.use(cors());
@@ -26,9 +27,9 @@ mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 
 app.use('/api/auth', authRouter);
-app.use('/api/users', userRouter);
+app.use('/api/users', ensureAuthMiddleware, userRouter);
 app.use('/api/books', bookRouter);
-app.use('/api/transactions', transactionRouter);
+app.use('/api/transactions', ensureAuthMiddleware, transactionRouter);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));

@@ -11,7 +11,7 @@ BookCard.propTypes = {
 };
 
 function BookCard(props) {
-  const { bookCover, title, description, nameSeller } = props;
+  const { bookPictureUrl, title, description, nameSeller } = props;
   return (
     <Card
       hoverable
@@ -19,7 +19,7 @@ function BookCard(props) {
       cover={
         <img
           alt="example"
-          src={bookCover}
+          src={bookPictureUrl}
           style={{ height: 300, objectFit: 'contain' }}
         />
       }>

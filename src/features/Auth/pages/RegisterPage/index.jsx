@@ -1,14 +1,13 @@
 import RegisterForm from 'features/Auth/components/RegisterForm';
-import React, { useState } from 'react';
+import React from 'react';
 import API from 'utils/api';
 import './style.scss';
 RegisterPage.propTypes = {};
 
 function RegisterPage(props) {
-
   const handleSubmit = async (user, actions) => {
     try {
-      const response = await API.call('post', 'auth/register', user);
+      await API.call('post', 'auth/register', user);
       actions.setStatus({ isSuccess: true, message: 'Register success !' });
     } catch (e) {
       actions.setErrors({ ...e.response.data });
@@ -21,9 +20,7 @@ function RegisterPage(props) {
         <div className="register__title">
           <p>Register</p>
         </div>
-        <RegisterForm
-          onSubmit={handleSubmit}
-        />
+        <RegisterForm onSubmit={handleSubmit} />
       </div>
     </div>
   );

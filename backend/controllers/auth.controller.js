@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 exports.auth = async (req, res, next) => {
   try {
     return res.status(201).json({
-      user: req.user,
+      isAuthentication: true,
     });
   } catch (err) {
     return next({ status: 400, message: err.message });
