@@ -16,10 +16,12 @@ app.use(cors());
 app.use(cookieParser(process.env.SESSION_SECRET));
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .catch(error => console.log(error));
 mongoose.connection.on('connected', () => {
   console.log('Mongoose is connected');
 });

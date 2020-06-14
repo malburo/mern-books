@@ -4,7 +4,7 @@ import { Button, Card } from 'antd';
 import Meta from 'antd/lib/card/Meta';
 
 BookCard.propTypes = {
-  bookCover: PropTypes.string.isRequired,
+  bookPictureUrl: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   nameSeller: PropTypes.string.isRequired,

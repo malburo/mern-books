@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bookSchema = new mongoose.Schema({
   sellerId: { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
   title: String,
-  decription: String,
+  description: String,
   bookPictureUrl: {
     type: String,
     default:

@@ -2,7 +2,7 @@ const Book = require('../models/book.model');
 
 exports.get = async (req, res, next) => {
   try {
-    const books = await Book.find();
+    const books = await Book.find().populate('sellerId');
     return res.status(201).json({
       books: books,
     });

@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
-import { Route, Redirect } from 'react-router-dom/cjs/react-router-dom.min';
-import API from 'utils/api';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
-import { authPrivateRouter } from 'features/Auth/AuthSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { Route } from 'react-router-dom/cjs/react-router-dom.min';
+import API from 'utils/api';
 PrivateRoute.propTypes = {};
 
 function PrivateRoute({ component: Component, layout: Layout, ...rest }) {
@@ -17,8 +15,7 @@ function PrivateRoute({ component: Component, layout: Layout, ...rest }) {
         } else {
           history.push('/auth/login');
         }
-        const response = await API.call('get', 'auth');
-        console.log(response);
+        await API.call('get', 'auth');
       } catch (error) {
         localStorage.removeItem('jwtToken');
         history.push('/auth/login');
