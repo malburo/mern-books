@@ -2,7 +2,10 @@ const User = require('../../models/user.model');
 
 module.exports = async (req, res, next) => {
   try {
-    const checkEmail = await User.find({ email: req.body.email });
+    const [checkEmail, checkUsername] = await Promise.all([
+      User.find({ email: req.body.email }),
+      User.find({ username: req.body.username }),
+    ]);
     let errors = {};
     if (!req.body.fullname) {
       errors.fullname = 'Vui lòng cung cấp họ và tên.';
@@ -15,6 +18,9 @@ module.exports = async (req, res, next) => {
     }
     if (checkEmail.length) {
       errors.email = 'Email này đã được sử dụng';
+    }
+    if (checkUsername.length) {
+      errors.isExistsUsername = 'Username này đã được sử dụng';
     }
     if (Object.keys(errors).length !== 0) {
       return res.status(400).json({ ...errors });
