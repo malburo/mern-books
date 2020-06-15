@@ -1,8 +1,8 @@
-import BookList from 'features/Books/components/BookList';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import API from 'utils/api';
-import { getBooks } from 'features/BookStore/bookStoreSlice';
+import { getBooks, deleteBook } from 'features/BookStore/bookStoreSlice';
+import BookStoreList from 'features/BookStore/components/BookStoreList';
 BookStorePage.propTypes = {};
 
 function BookStorePage(props) {
@@ -14,8 +14,21 @@ function BookStorePage(props) {
     }
     fetchData();
   }, []);
+  const handleDeleteBook = bookId => {
+    return async e => {
+      try {
+        const response = await API.call(
+          'delete',
+          `store/books/delete/${bookId}`
+        );
+        dispatch(deleteBook(bookId));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  };
   const books = useSelector(state => state.bookStore);
-  return <BookList books={books} />;
+  return <BookStoreList books={books} handleDeleteBook={handleDeleteBook} />;
 }
 
 export default BookStorePage;

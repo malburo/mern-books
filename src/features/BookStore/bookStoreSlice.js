@@ -10,9 +10,14 @@ const bookStore = createSlice({
     createBook: (state, action) => {
       state.push(action.payload);
     },
+    deleteBook: (state, action) => {
+      return state.filter(state => {
+        return state._id !== action.payload;
+      });
+    },
   },
 });
 
 const { reducer, actions } = bookStore;
-export const { getBooks, createBook } = actions;
+export const { getBooks, createBook, deleteBook } = actions;
 export default reducer;

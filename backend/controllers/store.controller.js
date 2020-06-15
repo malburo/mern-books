@@ -23,7 +23,6 @@ exports.get = async (req, res, next) => {
 
 exports.create = async (req, res, next) => {
   try {
-    console.log(req.file);
     if (req.file) {
       let bookPictureUrl = null;
       await cloudinary.uploader.upload(req.file.path, async (error, result) => {
@@ -61,7 +60,7 @@ exports.update = async (req, res, next) => {
 
 exports.delete = async (req, res, next) => {
   try {
-    const { bookId } = req.body;
+    const bookId = req.params.id;
     await Book.findByIdAndRemove(bookId);
     return res.status(201).json({
       isRemoved: true,
