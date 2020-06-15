@@ -1,28 +1,25 @@
 import { Col, Row } from 'antd';
 import React from 'react';
 import BookCard from '../BookCard';
-import { useSelector } from 'react-redux';
 BookList.propTypes = {};
 
 function BookList(props) {
-  const books = useSelector(state => state.books);
+  const { books } = props;
   const booksList = books.map(book => {
     const { bookPictureUrl, title, description, _id } = book;
     return (
-      <BookCard
-        bookPictureUrl={bookPictureUrl}
-        title={title}
-        description={description}
-        nameSeller={book.sellerId.fullname}
-        key={_id}
-      />
+      <Col span={6}>
+        <BookCard
+          bookPictureUrl={bookPictureUrl}
+          title={title}
+          description={description}
+          nameSeller={book.sellerId.fullname}
+          key={_id}
+        />
+      </Col>
     );
   });
-  return (
-    <Row>
-      <Col span={6}>{booksList}</Col>
-    </Row>
-  );
+  return <Row>{booksList}</Row>;
 }
 
 export default BookList;

@@ -32,7 +32,7 @@ mongoose.set('useCreateIndex', true);
 app.use('/api/auth', authRouter);
 app.use('/api/users', ensureAuthMiddleware, userRouter);
 app.use('/api/books', bookRouter);
-app.use('/api/store', ensureAuthMiddleware, storeRouter);
+app.use('/api/store/books', ensureAuthMiddleware, storeRouter);
 app.use('/api/transactions', ensureAuthMiddleware, transactionRouter);
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));

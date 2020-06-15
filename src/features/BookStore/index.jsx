@@ -2,18 +2,22 @@ import NotFound from 'components/NotFound';
 import React from 'react';
 import { useRouteMatch } from 'react-router-dom/cjs/react-router-dom';
 import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
-import TransactionPage from './pages/TransactionPage';
 
-Transactions.propTypes = {};
+import BookStorePage from './pages/BookStorePage';
+import CreateBookPage from './pages/CreateBookPage';
 
-function Transactions(props) {
+
+BookStore.propTypes = {};
+
+function BookStore(props) {
   const match = useRouteMatch();
   return (
     <Switch>
-      <Route exact path={match.url} component={TransactionPage} />
+      <Route exact path={match.url} component={BookStorePage} />
+      <Route exact path={`${match.url}/create`} component={CreateBookPage} />
       <Route component={NotFound} />
     </Switch>
   );
 }
 
-export default Transactions;
+export default BookStore;

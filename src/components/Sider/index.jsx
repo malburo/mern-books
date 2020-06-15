@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import './style.scss';
 import Logo from './logo';
+import SubMenu from 'antd/lib/menu/SubMenu';
 const { Sider } = Layout;
 
 SiderContainer.propTypes = {};
@@ -23,6 +24,14 @@ function SiderContainer(props) {
         <Menu.Item key="2" icon={<DesktopOutlined />}>
           <Link to="/transactions">Transactions</Link>
         </Menu.Item>
+        <SubMenu key="sub1" icon={<DesktopOutlined />} title="Store">
+          <Menu.Item key="3">
+            <Link to="/store/books">My Books</Link>
+          </Menu.Item>
+          <Menu.Item key="4">
+            <Link to="/store/books/create">Create Book</Link>
+          </Menu.Item>
+        </SubMenu>
       </Menu>
     </Sider>
   );

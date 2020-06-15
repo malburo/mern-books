@@ -13,11 +13,15 @@ function RegisterForm(props) {
   const { onSubmit } = props;
   const initialValues = {
     fullname: '',
+    username: '',
     email: '',
     password: '',
   };
   const validationSchema = Yup.object().shape({
     fullname: Yup.string()
+      .required('This field is required.')
+      .min(2, 'Your name is too short'),
+    username: Yup.string()
       .required('This field is required.')
       .min(2, 'Your name is too short'),
     email: Yup.string()
@@ -41,6 +45,13 @@ function RegisterForm(props) {
               name="fullname"
               component={InputField}
               placeholder="fullname"
+            />
+            <FastField
+              prefix={<UserOutlined className="site-form-item-icon" />}
+              type="text"
+              name="username"
+              component={InputField}
+              placeholder="username"
             />
             <FastField
               prefix={<AuditOutlined className="site-form-item-icon" />}

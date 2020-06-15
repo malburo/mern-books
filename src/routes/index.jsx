@@ -12,6 +12,7 @@ import PrivateRoute from './privateRoute';
 
 const Auth = React.lazy(() => import('features/Auth'));
 const Books = React.lazy(() => import('features/Books'));
+const BookStore = React.lazy(() => import('features/BookStore'));
 const Transactions = React.lazy(() => import('features/Transactions'));
 
 Routes.propTypes = {};
@@ -23,6 +24,11 @@ function Routes(props) {
         <Switch>
           <PublicRoute path="/auth" component={Auth} layout={BlankLayout} />
           <PrivateRoute path="/books" component={Books} layout={MainLayout} />
+          <PrivateRoute
+            path="/store/books"
+            component={BookStore}
+            layout={MainLayout}
+          />
           <PrivateRoute
             path="/transactions"
             component={Transactions}
