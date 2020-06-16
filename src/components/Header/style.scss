@@ -6,3 +6,22 @@
     margin-right: 30px !important;
   }
 }
+.ant-badge:not(.ant-badge-not-a-wrapper) {
+  margin-right: 20px;
+}
+.ant-badge.ant-badge-rtl:not(.ant-badge-not-a-wrapper) {
+  margin-right: 0;
+  margin-left: 20px;
+}
+.header__cart {
+  margin-right: 30px !important;
+  height: 32px;
+  width: 32px;
+}
+.header__cart-link {
+  width: 30px;
+  height: 30px;
+
+  background-image: url('https://image.flaticon.com/icons/svg/825/825211.svg');
+  display: inline-block;
+}

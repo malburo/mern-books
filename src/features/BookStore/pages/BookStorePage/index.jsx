@@ -21,6 +21,7 @@ function BookStorePage(props) {
           'delete',
           `store/books/delete/${bookId}`
         );
+        console.log(response);
         dispatch(deleteBook(bookId));
       } catch (error) {
         console.log(error);

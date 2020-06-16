@@ -18,7 +18,6 @@ function BookStoreCard(props) {
     bookId,
     handleDeleteBook,
   } = props;
-  console.log(handleDeleteBook);
   return (
     <Card
       hoverable

@@ -9,6 +9,7 @@ const authRouter = require('./routes/auth.route');
 const userRouter = require('./routes/user.route');
 const bookRouter = require('./routes/book.route');
 const storeRouter = require('./routes/store.route');
+const cartRouter = require('./routes/cart.route');
 const transactionRouter = require('./routes/transaction.route');
 const { ensureAuthMiddleware } = require('./middlewares/auth.middleware');
 const app = express();
@@ -31,8 +32,9 @@ mongoose.set('useCreateIndex', true);
 
 app.use('/api/auth', authRouter);
 app.use('/api/users', ensureAuthMiddleware, userRouter);
-app.use('/api/books', bookRouter);
+app.use('/api/books', ensureAuthMiddleware, bookRouter);
 app.use('/api/store/books', ensureAuthMiddleware, storeRouter);
+app.use('/api/cart', ensureAuthMiddleware, cartRouter);
 app.use('/api/transactions', ensureAuthMiddleware, transactionRouter);
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));

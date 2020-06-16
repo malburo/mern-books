@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, Card } from 'antd';
 import Meta from 'antd/lib/card/Meta';
 
+
 BookCard.propTypes = {
   bookPictureUrl: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -11,7 +12,14 @@ BookCard.propTypes = {
 };
 
 function BookCard(props) {
-  const { bookPictureUrl, title, description, nameSeller } = props;
+  const {
+    bookPictureUrl,
+    title,
+    description,
+    nameSeller,
+    handleAddToCart,
+    bookId,
+  } = props;
   return (
     <Card
       hoverable
@@ -25,7 +33,7 @@ function BookCard(props) {
       }>
       <Meta title={title} description={description} />
       <p style={{ marginTop: 10, marginBottom: 10 }}>Người Bán: {nameSeller}</p>
-      <Button type="primary" block>
+      <Button type="primary" onClick={handleAddToCart(bookId)} block>
         Thêm vào giỏ hàng
       </Button>
     </Card>

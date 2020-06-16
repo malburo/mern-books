@@ -6,7 +6,6 @@ import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import BookStorePage from './pages/BookStorePage';
 import CreateBookPage from './pages/CreateBookPage';
 
-
 BookStore.propTypes = {};
 
 function BookStore(props) {
@@ -15,6 +14,11 @@ function BookStore(props) {
     <Switch>
       <Route exact path={match.url} component={BookStorePage} />
       <Route exact path={`${match.url}/create`} component={CreateBookPage} />
+      <Route
+        exact
+        path={`${match.url}/edit/:bookId`}
+        component={CreateBookPage}
+      />
       <Route component={NotFound} />
     </Switch>
   );
