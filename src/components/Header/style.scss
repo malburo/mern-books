@@ -4,6 +4,7 @@
   justify-content: flex-end;
   &__avatar {
     margin-right: 30px !important;
+    cursor: pointer;
   }
 }
 .ant-badge:not(.ant-badge-not-a-wrapper) {

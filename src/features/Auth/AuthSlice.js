@@ -25,12 +25,3 @@ const auth = createSlice({
 const { reducer, actions } = auth;
 export const { loginSuccess, logoutSuccess } = actions;
 export default reducer;
-
-// export const logout = () => async dispatch => {
-//   try {
-//     localStorage.removeItem('jwtToken');
-//     return dispatch(logoutSuccess());
-//   } catch (e) {
-//     return console.error(e.response.data);
-//   }
-// };
