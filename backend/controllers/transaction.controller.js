@@ -2,9 +2,9 @@ const Transaction = require('../models/transaction.model');
 
 exports.get = async (req, res, next) => {
   try {
-    const transctions = await Transaction.find();
+    const transactions = await Transaction.find();
     return res.status(201).json({
-      transctions: transctions,
+      transactions: transactions,
     });
   } catch (err) {
     return next({ status: 400, message: err.message });

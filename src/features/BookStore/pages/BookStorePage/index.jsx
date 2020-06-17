@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import API from 'utils/api';
-import { getBooks, deleteBook } from 'features/BookStore/bookStoreSlice';
+import { setBooks, deleteBook } from 'features/BookStore/bookStoreSlice';
 import BookStoreList from 'features/BookStore/components/BookStoreList';
 BookStorePage.propTypes = {};
 
@@ -10,7 +10,7 @@ function BookStorePage(props) {
   useEffect(() => {
     async function fetchData() {
       const response = await API.call('get', 'store/books');
-      dispatch(getBooks(response.books));
+      dispatch(setBooks(response.books));
     }
     fetchData();
   }, []);
